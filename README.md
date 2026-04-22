@@ -1,5 +1,6 @@
 # 📈 Crypto Predictor
-Complete cryptocurrency price prediction pipeline with an interactive dashboard and chatbot.
+# Complete cryptocurrency price prediction pipeline with an interactive dashboard and chatbot.
+
 Pipeline completo de predicción de precios de criptomonedas con dashboard interactivo y un chatbot.
 ---
 
