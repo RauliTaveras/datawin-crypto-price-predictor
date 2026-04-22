@@ -1,7 +1,6 @@
 # 📈 Crypto Predictor
-
-Pipeline completo de predicción de precios de criptomonedas con dashboard interactivo.
-
+Complete cryptocurrency price prediction pipeline with an interactive dashboard and chatbot.
+Pipeline completo de predicción de precios de criptomonedas con dashboard interactivo y un chatbot.
 ---
 
 ## Estructura del proyecto
@@ -42,37 +41,37 @@ pip install -r requirements.txt
 
 ---
 
-## Uso
+## Use | Uso
 
-### 1. Ejecutar el pipeline una sola vez
+### 1. Run the piplene once only | Ejecutar el pipeline una sola vez
 ```bash
 python pipeline_etl.py
 ```
 
-### 2. Ejecutar en loop automático (cada hora)
+### 2. Run in automatic loop (hourly) | Ejecutar en loop automático (cada hora)
 ```bash
 python pipeline_etl.py --loop
 ```
 
-### 3. Solo actualizar datos sin re-entrenar
+### 3. Update data only (no retraining) | Solo actualizar datos sin re-entrenar
 ```bash
 python pipeline_etl.py --no-retrain
 ```
 
-### 4. Lanzar el dashboard
+### 4. Launch the dashboard | Lanzar el dashboard
 ```bash
 streamlit run dashboard.py
 ```
 
 ---
 
-## Flujo del Pipeline ETL
+## ETL Pipeline Flow | Flujo del Pipeline ETL
 
 ```
-Extraer          Limpiar + Features      Entrenar        Predecir
-CoinGecko    →   Lags, SMA, EMA,    →   Ridge +     →   Próxima
-CryptoCompare    RSI, Bollinger Bands    SARIMAX         vela
-                 Volumen, Temporales
+Extract          Clean+ Features      Train        Predict
+CoinGecko    →   Lags, SMA, EMA,    →   Ridge +     →   Next
+CryptoCompare    RSI, Bollinger Bands    SARIMAX         candle
+                 Volume, Time features
 ```
 
 ---
@@ -95,3 +94,16 @@ CryptoCompare    RSI, Bollinger Bands    SARIMAX         vela
 | SARIMAX  | Modelo de series de tiempo puro   | Complementario al Ridge     |
 
 ## Modelo de IA: phi4-mini
+Used as an analytics assistant inside the dashboard to interpret metrics, chartss, charts, and model results in real time.
+
+Utilizado como asistente de análisis dentro del dashboard para interpretar métricas, gráficos y resultados del modelo en tiempo real.
+
+## Important Notes | Notas importantes
+Trained models (.pkl) are not included in the repository due to size limitations.
+
+Los modelos entrenados (.pkl) no se incluyen en el repositorio por limitaciones de tamaño.
+
+Models are automatically generated when running pipeline_etl.py.
+
+Los modelos se generan automáticamente al ejecutar pipeline_etl.py.
+
