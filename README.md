@@ -9,32 +9,32 @@ Pipeline completo de predicción de precios de criptomonedas con dashboard inter
 ```
 crypto_predictor/
 │
-├── config.py               # Constantes globales (criptos, rutas, hiperparámetros)
-├── data_collector.py       # Paso 1 — Extracción OHLCV (CoinGecko + CryptoCompare)
-├── feature_engineering.py  # Pasos 2+3 — Limpieza y features técnicas
-├── model_trainer.py        # Paso 4 — Entrenamiento Ridge + SARIMAX
-├── predictor.py            # Paso 5 — Predicción del siguiente precio
-├── visualizer.py           # Gráficos de velas con Plotly
-├── pipeline_etl.py         # Orquestador completo + scheduler automático
-├── dashboard.py            # Dashboard Streamlit
+├── config.py               # Global constants (cryptos, routes, hyperparameters) | Constantes globales (criptos, rutas, hiperparámetros)
+├── data_collector.py       # Step 1 — OHLCV Extraction (CoinGecko + CryptoCompare) | Paso 1 — Extracción OHLCV (CoinGecko + CryptoCompare)
+├── feature_engineering.py  # Steps 2+3 — Cleaning and technical features | Pasos 2+3 — Limpieza y features técnicas
+├── model_trainer.py        # Step 4 — Ridge + SARIMAX Training |  Entrenamiento Ridge + SARIMAX
+├── predictor.py            # Step 5 Prediction of the next price | Predicción del siguiente precio
+├── visualizer.py           # Candlestick charts with Plotly | Gráficos de velas con Plotly
+├── pipeline_etl.py         # Complete orchestrator + automatic scheduler | Orquestador completo + scheduler automático
+├── dashboard.py            # Streamlit Dashboard | Dashboard Streamlit
 ├── requirements.txt
 │
-├── data/                   # Generado automáticamente
+├── data/                   # Automatically generated | Generado automáticamente
 │   ├── crypto_data.db
 │   └── crypto_processed.pkl
 │
-├── models/                 # Generado automáticamente
+├── models/                 #Automatically generated | Generado automáticamente
 │   ├── best_ridge_model.pkl
 │   ├── sarimax_model.pkl
 │   └── feature_cols.pkl
 │
-└── logs/                   # Generado automáticamente
+└── logs/                   #Automatically generated | Generado automáticamente
     └── pipeline.log
 ```
 
 ---
 
-## Instalación
+## installation | Instalación
 
 ```bash
 pip install -r requirements.txt
@@ -81,15 +81,19 @@ CryptoCompare    RSI, Bollinger Bands    SARIMAX         candle
 
 | API            | Uso                                 | Restricción          |
 |----------------|-------------------------------------|----------------------|
-| CoinGecko      | Datos diarios (fuente principal)    | 30 req/min (free)    |
-| CryptoCompare  | Datos 1h / 4h / fallback diario     | 100 req/min (free)   |
-| Binance        | ❌ No usada (error 451 por región)  | —                    |
+| CoinGecko      | Daily data (main source)            | 30 req/min (free)    |
+| CryptoCompare  | Data 1h / 4h / daily fallback       | 100 req/min (free)   |
+
 
 ---
 
-## Modelos
+## Models | Modelos
+| Model    | Por   puse                        | Typical metrics           |
+|----------|-----------------------------------|----------------------------|
+| Ridge    | Prediction with technical features  | R² ≈ 0.9999, RMSE ≈ $300  |
+| SARIMAX  | Prediction with technical features   | Complementary to the Ridge     |
 
-| Modelo   | Propósito                         | Métricas típicas           |
+| Modelos    | Propósito                         | Métricas típicas           |
 |----------|-----------------------------------|----------------------------|
 | Ridge    | Predicción con features técnicas  | R² ≈ 0.9999, RMSE ≈ $300  |
 | SARIMAX  | Modelo de series de tiempo puro   | Complementario al Ridge     |
